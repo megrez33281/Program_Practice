@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> num = new ArrayList<>();
+        int[] newNum = Arrays.stream(nums).sorted().toArray();
+        all(newNum,list,num,0);
+
+        return  list;
+    }
+
+    private void all(int[] nums,List<List<Integer>> list,List<Integer> num,int max){
+
+        if(num.size() == 3 || max == nums.length){
+            int sum = 0;
+            for(int i:num){sum += i;}
+            if(sum == 0 && num.size() == 3){
+
+                if(!list.contains(num)){list.add(num);}}
+        }
+
+        else if(num.size() <= 2){
+            for(int i=max; i<nums.length; i++){
+                List<Integer> temp = new ArrayList<>(num);
+                temp.add(nums[i]);
+                all(nums,list,temp,i+1);}
+
+        }
+
+    }
+
+
+
+}

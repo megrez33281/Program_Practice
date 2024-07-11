@@ -1,0 +1,7 @@
+題目會輸入4個點，4個點中有兩個點重複(順序不一定)且此3個點(含重複點)會構成一個平行四邊形，求此平行四邊形的斜邊
+
+令重複的點為 (endx, endy)
+令外兩點分別為 (startIx, startIy) (startIIx, startIIy)
+所求為(startIx + startIIx - endx, startIy + startIIy - endy)
+由於有重複的點不好定位
+故讀取後找到重複之點，並用所有點之總和(startIx + startIIx + endx + endx, startIy + startIIy + endy + endy)-3*重複點得到答案(startIx + startIIx - endx, startIy + startIIy - endy)

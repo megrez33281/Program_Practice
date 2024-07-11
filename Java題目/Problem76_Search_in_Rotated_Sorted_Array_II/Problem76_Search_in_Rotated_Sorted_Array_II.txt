@@ -1,0 +1,22 @@
+//解法；先比較nums[0]和target，若target較大，則從頭部開始往後找，當元素不再遞減(包含等於)或等於nums的最大範圍時停止，若target較小，則從尾部開始往回找，當元素不再遞增(包含等於)或等於index=0時停止
+class Solution {
+    public boolean search(int[] nums, int target) {
+
+        if(nums.length == 0){return false;}
+        if(target == nums[0]){
+            return true;}
+
+        else if(target > nums[0]){
+            int index = 0;
+            while(index < nums.length-1 && target > nums[index] && nums[0] <= nums[index]){index++;}//使得index不超出nums的範圍
+            return (nums[index] == target);
+        }
+
+        else{
+            int index = nums.length-1;
+            while(index > 0 && target < nums[index] && nums[nums.length-1] >= nums[index]){index--;}//使得index不超出nums的範圍
+            return (nums[index] == target);
+        }
+
+    }
+}

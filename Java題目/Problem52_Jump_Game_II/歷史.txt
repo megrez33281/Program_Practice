@@ -1,0 +1,25 @@
+
+class Solution {
+    public int jump(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        step(nums,list,0,0);
+        int min = list.get(0);
+        for(int i:list){
+            if(i < min){min = i;}}
+        return min;
+    }
+
+    private void step(int[] nums,List<Integer> list, int count, int index){
+
+        if(index < nums.length-1)
+            for(int i=1; i<=nums[index]; i++){
+                step(nums,list,count+1,index+i);
+            }
+
+        else if(index == nums.length-1){
+            list.add(count);
+        }
+
+    }
+
+}

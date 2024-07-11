@@ -1,0 +1,4 @@
+可以以BFS的方式用level order traversal的方式完成
+
+在此嘗試以preorder(中-->左-->右)的方式進行遞迴
+每次遞迴用兩個指標分別指向當前node之左子樹與右子樹(令分別為left和right)，並進入while迴圈，設置其中一個指標為null為結束條件(由於題目給的皆是perfect binary tree，故當其中一個指標指向null，另一個指標也會)，並且將left的next指向right，之後left往右走，right往左走，完成一次迴圈。

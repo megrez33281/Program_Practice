@@ -1,0 +1,37 @@
+動態規劃
+Algorithm Best_Time_to_Buy_and_Sell_Stock_II
+Input：procress, procress is an array
+Ouptut: maximum profit that can achieve
+
+buy -> 1  //1代表買入，0代表賣出
+if len(procress) < 2 do 
+   return 0
+pre -> 0 //前指針
+cur -> 1 //後指針
+profit -> 0 // 總收益
+BuyIn -> procress(0) //買入價格
+sale -> 0 //賣出價格
+while cur < len(procress) do
+   //當前為買入
+   if buy == 1 do //確認買入的價格為最低
+	if procress(cur) < procress(pre) do //用更低的價格買入
+		BuyIn = procress(cur)
+	else if procress(cur) > BuyIn  do //可以賣出
+		buy -> 0 //改為賣出狀態
+		sale = procress(cur)
+   else
+	if procress(cur) > procress(pre) do //用更高的價格賣出
+		sale = procress(cur)
+	else if procress(cur) < sale  do //可以買入
+		buy -> 1
+		profit += sale - BuyIn
+		BuyIn -> procress(cur)
+		sale ->  0
+   cur++
+   pre++
+if buy == 0 do //表示正處於賣出狀態，可以直接賣出
+  profit += sale - BuyIn
+return profit
+
+	
+      

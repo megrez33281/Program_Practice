@@ -1,0 +1,22 @@
+//遍歷matrix，若該行含有0，則將該行全改為0，且紀錄其列，之後再將被記錄的列都改為0
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        List<Integer> row = new ArrayList<>();
+        int len = matrix.length;
+        int wid = matrix[0].length;
+        for(int i=0; i<len; i++){
+            int judge = 0;
+            for(int j=0; j<wid; j++){
+                if(matrix[i][j] == 0){
+                    row.add(j);
+                    judge = 1;}}
+            if(judge == 1){matrix[i] = new int[wid];}
+        }
+        for(int i=0; i<len; i++){
+            for(int j:row){
+                matrix[i][j] = 0;
+            }
+        }
+
+    }
+}

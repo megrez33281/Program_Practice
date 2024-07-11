@@ -1,0 +1,34 @@
+class Solution {
+    public String countAndSay(int n) {
+
+        String ans = count(n,0,1);
+        return  ans;
+    }
+
+    private String count(int n , int now, String ans) {
+
+         if(now  n-1){
+            StringBuilder combine = new StringBuilder();
+            int value = 1;
+            int pointer = 0;
+            while (pointer  ans.length()) {
+                if (pointer + 1  ans.length() && ans.charAt(pointer) == ans.charAt(pointer + 1)) {
+                    value++;
+                    pointer++;}
+                else {
+                    combine.append(value).append(ans.charAt(pointer));
+                    pointer++;
+                    value = 1;
+                }
+            }
+            return count(n, now + 1, combine.toString());遞迴
+        }
+
+         else{return ans;}
+
+
+    }
+
+
+
+}

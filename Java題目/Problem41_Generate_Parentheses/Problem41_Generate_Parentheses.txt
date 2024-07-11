@@ -1,0 +1,44 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+
+        List<String> ans = new ArrayList<>();
+        generate(ans, n, new char[n * 2], 0);
+
+        return ans;
+    }
+
+    private void generate(List<String> ans, int n, char[] word, int index) {
+
+        if (index == n * 2) {
+            if (judge(word)) {//此方式為列出所有可能的排列，不會出現重複
+                ans.add(new String(word));//char -> string
+            }
+        }
+        else {
+
+            word[index] = '(';
+            generate(ans, n, word, index + 1);
+            word[index] = ')';
+            generate(ans, n, word, index + 1);
+
+        }
+
+
+    }
+
+
+    private boolean judge(char[] word) {
+        int balance = 0;
+        for (char i : word) {
+            if (i == '(') {
+                balance++;}
+
+            else{
+                balance--;}
+            if(balance <0){return false;}
+        }
+
+        return balance == 0;
+    }
+
+}

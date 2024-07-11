@@ -1,0 +1,11 @@
+利用遞回來完成
+
+寫一個函式Bangla(long long number)
+
+功能為找出'kuti' (10000000), 'lakh' (100000), 'hajar' (1000), 'shata' (100)
+故當number >= 10000000時代表有kuti，
+將 number/10000000 後再丟入Bangla中檢查是否還有其他的單位存在
+numbeer %= 10000000 後繼續往下檢查還有沒有其他單位
+
+依此類推檢查完'kuti' (10000000), 'lakh' (100000), 'hajar' (1000), 'shata' (100)後
+若numbeer < 100 代表此時number中已經不存在任何單位，直接輸出

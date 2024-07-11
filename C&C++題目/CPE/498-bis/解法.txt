@@ -1,0 +1,5 @@
+用int coefficient[999]接取輸入的係數並用getchar()判斷換行鍵
+接取後從coefficien後面第二個開始(第一個為常數項，微分後等於0)，並設sum=0,xl=1，再用一個計數器j=2進行迴圈
+每次回圈sum += coefficient[i]*j*xl
+        xl*=x;
+	j++;

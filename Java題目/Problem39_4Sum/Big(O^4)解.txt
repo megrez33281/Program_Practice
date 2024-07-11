@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+
+        List<List<Integer>> lists = new ArrayList<>();
+
+        if(nums.length <=3){return lists;}
+        int[] newNum = Arrays.stream(nums).sorted().toArray();
+        long average = target/4;
+        int len = newNum.length;
+
+        if((newNum[0] > 0 && target < 0) || (newNum[len-1]<0 && target >0)){return lists;}
+        if(newNum[0] > average || newNum[len-1] < average){return lists;}
+
+
+        for(int i=0; i<len; i++){
+            for(int j=i+1; j<len;j++){
+                for(int k=j+1; k <len; k++){
+                    for(int l=k+1; l< len; l++){
+
+                        if((long)newNum[i] + newNum[j] + newNum[k] + newNum[l] == target && !lists.contains(Arrays.asList(newNum[i],newNum[j],newNum[k],newNum[l]))){lists.add(Arrays.asList(newNum[i],newNum[j],newNum[k],newNum[l]));}
+                    }
+                    while(k <len-1 && newNum[k] == newNum[k+1]){k++;}
+                }
+                while(j <len-1 && newNum[j] == newNum[j+1]){j++;}
+            }
+            while(i < len-1 && newNum[i] == newNum[i+1]){i++;}
+        }
+
+
+
+        return  lists;
+    }
+}

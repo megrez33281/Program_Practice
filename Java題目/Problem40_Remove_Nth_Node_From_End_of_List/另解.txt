@@ -1,0 +1,31 @@
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        int index = 0;
+        //此時temp 與 ans 為指標，temp與ans.next 皆指向 head之地址(與head指向相同地址)
+        ListNode ans = new ListNode(0);//將ans空出一個地址確保刪除後ans不為空
+        ListNode temp = head;
+        ans.next = head;//將ans之地址空出
+        while(temp != null){
+            index ++;
+            temp = temp.next;}//將temp不斷指向下一個ListNode之地址
+        //此時temp指向head之ListNode之尾部
+        index-=n;//得到目標索引
+        temp = ans;//再將temp指向ans(ans.next為head)
+        while(index > 0){
+            index--;
+            temp = temp.next;}//由於temp指向ans，while跑完後會指向要刪除的ListNode的前一個ListNode，將temp指向相較head多一個地址的ans可以避免出現要刪除的ListNode導致其前一個ListNode為null的情況
+        temp.next = temp.next.next;//改變temp指向之地址指向的地址(原temp.next指向的是要刪除的ListNode，故不會為null)
+        //當temp.next.next為null代表原本要刪除的ListNode就在尾部
+        return ans.next;
+        //總結：藉由temp不斷指向不同的地址達到目的，重點為最後的temp.next = temp.next.next，用以完成刪除之目的
+    }
+}
+
+class ListNode{
+    int val;
+    ListNode next;
+    ListNode(){}
+    ListNode(int val){this.val = val;}
+    ListNode(int val, ListNode next){this.val = val; this.next = next;}
+}

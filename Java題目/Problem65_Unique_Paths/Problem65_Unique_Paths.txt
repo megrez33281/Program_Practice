@@ -1,0 +1,13 @@
+//解法：取階乘，避免乘法時溢出
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int right = n-1;
+        int down = m-1;
+        int total = right + down;
+        double ans = 1;
+        for(int i=total; i>Math.max(right,down); i--){ans*=i;}
+        for(int i=Math.min(right,down); i>1; i--){ans/=i;}
+
+        return (int)ans;
+    }
+}

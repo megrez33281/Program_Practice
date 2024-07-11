@@ -1,0 +1,5 @@
+移動方向為north時，up -> north  north -> down  down -> south  south ->
+以此類推
+建立6個int，分別代表up，north，east，west，south，down
+
+依照輸入的指令對各方向的點數進行調整

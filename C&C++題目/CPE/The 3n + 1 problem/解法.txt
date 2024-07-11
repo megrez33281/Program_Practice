@@ -1,0 +1,2 @@
+寫一函式計算cycle length
+用calloc(calloc會自動初始化為0)申請一個1000000大小的動態空間作為哈希表(hash table)，遇到重複數字可直接查看

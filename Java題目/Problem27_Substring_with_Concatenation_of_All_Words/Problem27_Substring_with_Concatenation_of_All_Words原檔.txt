@@ -1,0 +1,86 @@
+/**
+ Practice 10
+ Student Number：110502018
+ Course: 2022-CE1004-B
+ */
+
+package com.company;
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.io.*;
+
+
+
+public class A6_110502018{
+
+
+    public static void main(String[] args) {
+
+        Solution solution = new Solution();
+        List<Integer> find = solution.findSubstring("foobarfoobar",new String[]{"foo","bar"});
+        for(int i: find){System.out.println(i);}
+
+
+
+
+    }
+
+}
+
+class Solution {
+    public List<Integer> findSubstring(String s, String[] words) {
+
+        List<Integer> numberList = new ArrayList<>();
+        List<String> wordList = new ArrayList<>();
+        Order(words,wordList,0);
+        int length = wordList.get(0).length();
+        for(String i : wordList){
+            if(!s.equals(s.replace(i,""))){
+                for(int j=0; j<s.length()-length+1; j++){
+                    if(s.substring(j,j+length).equals(i)){
+                        if(!numberList.contains(j)){numberList.add(j);}}
+                }
+
+
+            }
+        }
+
+
+
+        return numberList;
+    }
+
+    public  void Order(String[] words, List<String> list, int layer){
+
+
+        //出口
+        if(layer == words.length-1){
+            StringBuilder temp = new StringBuilder();
+            for(String i: words){temp.append(i);}
+            list.add(temp.toString());
+            }
+
+        //動作
+        for(int i=layer; i<words.length; i++){
+            String temp = words[layer];
+            words[layer] = words[i];
+            words[i] = temp;
+            Order(words,list,layer+1);
+            words[i] = words[layer];
+            words[layer] = temp;
+        }
+
+
+
+    }
+
+
+
+
+}
+
+

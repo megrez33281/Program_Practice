@@ -1,0 +1,9 @@
+
+PI可以由 acos(-1) 得到
+
+由於sin cos接收的都是弧度，需要把讀取到的degree 轉成弧度(raid)
+由 2PI = 360 degree 知
+   1 degree = PI/180 raid
+
+一個扇形的弧長為：2*r*PI*(角度/360)
+弦為：a = sinA*(r/cos(A))

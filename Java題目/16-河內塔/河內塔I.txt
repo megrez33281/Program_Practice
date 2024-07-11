@@ -1,0 +1,29 @@
+
+
+    }
+
+
+}
+
+class Hanno{
+
+    public void HannoTower(int n,String start, String middle, String end){
+        //n為要移動的盤子數量
+
+        if(n == 1){
+        System.out.println(start+end);}//出口
+
+        else{
+        HannoTower(n-1,start,end,middle);
+        HannoTower(1,start,middle,end);
+        HannoTower(n-1,middle,start,end);}
+        /*
+        * 重複動作:
+        * 把一疊盤子中上方n-1個盤子移到輔助柱子
+        * 再把剩下的一個盤子移到終點柱子
+        * 接著以輔助柱子為起點柱，要把盤子移到終點柱
+        * 當只有一個盤子要移動時，輸出從起點柱與終點柱名稱
+        * */
+
+
+    }

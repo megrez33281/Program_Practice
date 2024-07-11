@@ -1,0 +1,8 @@
+以Queue的方式來完成走訪：
+	1.若root不為null，則將其丟入queue中
+	2.從queue中取出一個TreeNode進行訪問，訪問後，將其左右子樹(若存在)依序丟入queue中
+	3.不斷執行步驟2直到queue為空
+	註:在將node加入queue中時可以加入記數用以判斷每層的node數，且可以用for迴圈加上每層的長度用來判斷是否走訪完1 層
+
+
+註：int* returnSize 與 int** returnColumnSizes為較特別的地方，可做為傳遞不同寬度之二為陣列之參考。

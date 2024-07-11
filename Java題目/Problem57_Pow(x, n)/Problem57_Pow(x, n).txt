@@ -1,0 +1,23 @@
+class Solution {
+    public double myPow(double x, int n) {
+        double number = x;
+        if(n == 0) {return 1;}
+        if(n < 0){
+            n*=-1;
+            x = 1/x;
+            number = x;
+        }
+        n--;
+        while(n > 0){
+            long count = 1;
+            double temp = number;
+            while(count*2 < n && count < Integer.MAX_VALUE){
+                temp*=temp;
+                count*=2;}
+            n-= count;
+            x*=temp;}
+
+
+        return x;
+    }
+}

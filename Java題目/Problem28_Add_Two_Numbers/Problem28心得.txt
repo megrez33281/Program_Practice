@@ -1,0 +1,5 @@
+在此藉由不斷移動curr之地址達成目的
+先將curr指向target之地址，後不斷將curr指向.next的地址，使得target對應地址的空間，其ListNode會不斷延伸。
+由於首先將target.val設定為0，後設定的val皆為當前curr指向地址之.next之地址的值即，
+target.next.val = 0 ， target.next.next.val = 第一次 curr.next = new ListNode(要設定的值)之值(之後由 curr = curr.next，將curr指向curr.next之地址)
+故回傳時，回傳target.next(target.value 為初始設定的0，之後的target.next才會開始為答案)

@@ -1,0 +1,27 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int pointer = 0;
+        int ans = -1;
+        int rotate = 0;
+        int len = nums.length;
+
+        while(rotate < len-1 && nums[rotate] < nums[rotate+1]){rotate++;}
+        rotate++;
+
+        if(rotate == len){
+            while(nums[pointer] < target && pointer < len-1){pointer++;}
+            if(nums[pointer] == target){ans = pointer;}}
+        else if(target < nums[0] && target >= nums[rotate]){
+            pointer = rotate;
+            while(nums[pointer] < target && pointer < len-1){pointer++;}
+            if(nums[pointer] == target){ans = pointer;}}
+        else if(target >= nums[0]){
+            while(nums[pointer] < target && pointer < rotate){pointer++;}
+            if(nums[pointer] == target){ans = pointer;}
+        }
+
+
+        return ans;
+
+    }
+}

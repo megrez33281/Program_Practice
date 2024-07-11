@@ -1,0 +1,3 @@
+將輸入的binary轉成10進位並用輾轉相除法找到DCD(注意讀取前先將char轉成int)
+若GCD>1 則輸出All you need is love!
+否則輸出Love is not all you need

@@ -1,0 +1,27 @@
+//解法：將單字排序後比較
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> ans = new ArrayList<>();
+        List<String> compare = new ArrayList<>();
+        for(int i=0; i<strs.length; i++){
+            char[] temp = strs[i].toCharArray();
+            Arrays.sort(temp);
+            String combine = Arrays.toString(temp);
+            if(!compare.contains(combine)){
+                compare.add(combine);
+                List<String> tem = new ArrayList<>();
+                tem.add(strs[i]);
+                ans.add(tem);}
+            else{
+                int index = compare.indexOf(combine);
+                ans.get(index).add(strs[i]);
+            }
+        }
+
+
+
+
+        return ans;
+
+    }
+}

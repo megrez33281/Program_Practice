@@ -1,0 +1,11 @@
+        /*ListNode four = new ListNode(4);
+        ListNode thr = new ListNode(3,four);
+        ListNode sec = new ListNode(2,thr);
+        ListNode head = new ListNode(1,sec);*/
+        
+        //存取第1、3個地址
+        ListNode tem = head;//1之地址
+        head = head.next;//此時head指向2之地址
+        //將1之地址的下一地址指向3
+        tem.next = head.next;//須將頭部變為2之地址後才能將1之下一個地址指到3之地址，若先將1之下一個地址指到3，head = head.next會將頭部變為3
+        head.next = tem;

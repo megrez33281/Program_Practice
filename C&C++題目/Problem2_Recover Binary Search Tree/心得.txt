@@ -1,0 +1,12 @@
+
+  由於題目中說明只需將兩個node的位置交換即可得到正確的BST
+  為避免錯失真正要交換的node，以中-左-右(preorder)順序走訪(檢查)Tree(由大的Tree檢查至小的Tree)
+  由遞迴方式查看每一個node之subtree，從node之左子樹中找到最大的值，查看其是否大於node之值，從node之右子樹中找最小的值，查看其是否小於node之值，若同時發生node左子樹中最大值大於node之值且node右子樹中最小值小於node之值，則將node左子樹中最大值與node右子樹中最小值交換。若只發生node左子樹中最大值大於node之值或node右子樹中最小值小於node之值，將該值與node之值進行交換。(由於題目特性，node的左子樹中有至多一個大於node之值之node且node的右子樹中有至多一個小於node之值的node，可能同時發生)
+  總結：
+	1.當檢查到一node中，其左子樹和右子樹都有不符合BST規定之node時，將兩node之值交換
+	2.當檢查到一node中，其左子樹和右子樹其中一個有不符合BST規定之node，將該node之值與作為根之node之值交換
+
+	由於題目特性，交換後即可結束程式
+
+
+  註：由於BST的規定，一node之左子樹中之值皆須小於該node之值，一node之右子樹之值皆須大於該node之值。故當檢查到一node中，其左子樹和右子樹其中一個有不符合BST規定之node，將該node之值與作為根之node之值交換會使得交換後之node，其左/右子樹之值皆小/大於該node之值。

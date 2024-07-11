@@ -1,0 +1,6 @@
+此symmetric為與中心對稱之symmetric
+讀取矩陣後先檢查
+array[i][j] 是否大於等於0
+接著檢查
+array[i][j] 與 array[n-1-i][n-1-j]
+是否相等，若不相等表示非symmetric

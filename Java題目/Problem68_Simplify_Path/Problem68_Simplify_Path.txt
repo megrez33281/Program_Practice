@@ -1,0 +1,23 @@
+//尾部沒有"/"
+//多個"/"可視為一個"/"
+//".."->忽略當層
+//"."
+class Solution {
+    public String simplifyPath(String path) {
+        List<String> ans = new ArrayList<>();
+        String[] temp = path.split("/");
+        for(String i: temp){
+            if(i.equals("..") && ans.size()!=0){ans.remove(ans.size()-1);}
+            else if(!i.equals("") && !i.equals(".") && !i.equals("..")){ans.add(i);}
+        }
+        StringBuilder answer = new StringBuilder();
+        answer.append("/");
+        for(String i: ans){
+            answer.append(i);
+            answer.append("/");
+        }
+        if(answer.length()!=1){answer.deleteCharAt(answer.length()-1);}
+        return answer.toString();
+
+    }
+}

@@ -1,0 +1,37 @@
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(candidates);
+        int len = candidates.length;
+        for(int i=len-1; i>=0; i--){
+            List<Integer> temp = new ArrayList<>();
+            count(candidates,target,ans,i,temp);
+        }
+        return ans;
+    }
+
+    private void count(int[] candidates, int target,List<List<Integer>> ans, int pointer, List<Integer> temp){
+        if(pointer > 0 && target >0){//須注意無論target是否大於等於當前數字，遞迴時pointer需減1
+            List<Integer> tempI = new ArrayList<>(temp);
+            List<Integer> tempII = new ArrayList<>(temp);
+            count(candidates,target,ans,pointer-1,tempI);//不選
+            if(target >= candidates[pointer]){
+            tempII.add(candidates[pointer]);
+            target -= candidates[pointer];
+            count(candidates,target,ans,pointer-1,tempII);}}//選
+        else if(pointer == 0 && target>0){
+            target -= candidates[0];
+            temp.add(candidates[0]);
+            if(target == 0 && !ans.contains(temp)){
+                ans.add(temp);
+            }
+        }//由於此前每次遞迴pointer皆減1，需考慮pointer=0的狀況
+
+        else if(target == 0 && !ans.contains(temp)){
+            ans.add(temp);
+        }
+
+
+
+    }
+}

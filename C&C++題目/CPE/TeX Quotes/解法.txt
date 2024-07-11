@@ -1,0 +1,5 @@
+由於終點為EOF，用getchar()讀取字元並判斷是否為"
+並藉由bool flag判斷該替換成哪個引號
+
+註：bool需引入stdbool.h函式庫方可使用
+註：flag = !flag 可將flag取not

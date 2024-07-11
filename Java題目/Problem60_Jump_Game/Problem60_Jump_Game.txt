@@ -1,0 +1,22 @@
+//解法：當nums中不含0，必可達終點，當nums中含0，檢查是否會被卡在0的位置上
+class Solution {
+    public boolean canJump(int[] nums) {
+        if(nums.length <= 1){return true;}
+        else if(nums[0] == 0){return false;}
+        List<Integer> zero = new ArrayList<>();
+        for(int i=0; i<nums.length-1; i++){
+            if(nums[i] == 0){zero.add(i);}}
+        if(zero.isEmpty()){return true;}
+
+        for(int i=0; i<zero.size(); i++){
+            int index = zero.get(i);
+            index--;
+            while(index >= 0){
+                if(nums[index] + index <= zero.get(i)){index--;}
+                else{break;}}
+            if(index < 0 ){return false;}
+        }
+        return true;
+
+    }
+}

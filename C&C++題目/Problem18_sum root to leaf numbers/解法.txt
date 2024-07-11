@@ -1,0 +1,1 @@
+用vector<striing>遍歷Ttree，以string的特性得到所有的數字，最後用將String轉成int的方式計算答案

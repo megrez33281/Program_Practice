@@ -1,0 +1,3 @@
+根據輸入的數字(dec)計算fibonacci(最多計算到輸入數字之大小)並存入fibonaccimal中
+並從fibonaccimal尾部開始，遇到dec >= fibonaccima[index]時，dec -= fibonaccimal[index]，並且輸出1
+否則輸出0 

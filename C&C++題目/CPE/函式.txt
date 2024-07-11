@@ -1,0 +1,28 @@
+常用library：
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#include <stdlib.h>
+
+
+
+1.gets(char*)
+  可讀取字串，以換行鍵為終點
+
+2.strcmp(char*,char*)
+  可比較兩個字串的大小(alphbeta)，並依照大於、等於、小於回傳不同值
+
+3.strlen(char*)
+  可得到字串長度
+
+4.char name = getchar()
+  可讀取字元，包含空格鍵或換行鍵
+
+5.pow(x,y) 用來求x^y
+
+
+註：注意判定輸入的範圍
+
+PI = acos(-1)
+  

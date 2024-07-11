@@ -1,0 +1,39 @@
+//解法：由轉的次數(取餘數)計算出起點，作為新的ListNode的起點，之後再將原先ListNode的起點接到新ListNode的起點後面
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head == null){return null;}
+        int len = 0;
+        ListNode temp = head;
+        while(temp != null){
+            temp = temp.next;
+            len++;}
+        int n = k % len;
+        if(n == 0){return head;}
+        else{
+            int count = len;
+            ListNode newHead = head;
+            while(count > n){
+                count--;
+                newHead = newHead.next;
+            }
+            temp = newHead;
+            while(temp.next != null){temp = temp.next;}
+            int sub = len - count;
+            temp.next = head;
+            while(sub > 0){
+                temp = temp.next;
+                sub--;}
+            temp.next = null;
+            return newHead;
+        }
+
+    }
+
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }}

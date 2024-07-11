@@ -1,0 +1,27 @@
+//解法：紀錄三個顏色的數目後按順序將nums改造
+class Solution {
+    public void sortColors(int[] nums) {
+
+        int[] color = new int[3];
+        for(int i: nums){
+            switch(i){
+                case 0 -> color[0]++;
+                case 1 -> color[1]++;
+                default -> color[2]++;
+            }
+        }
+
+        int index = 0;
+        int colorIndex = 0;
+        while(colorIndex < 3 && index < nums.length){
+            if(color[colorIndex] > 0){
+                nums[index] = colorIndex;
+                color[colorIndex]--;
+                index++;}
+            else{
+                colorIndex++;
+            }
+        }
+
+    }
+}

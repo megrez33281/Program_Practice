@@ -1,0 +1,1 @@
+注意使用long long int以及%lld來處理整數

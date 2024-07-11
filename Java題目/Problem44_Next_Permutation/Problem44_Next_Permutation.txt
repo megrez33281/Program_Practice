@@ -1,0 +1,33 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        //由後往前找到第一個後面的數字大於前面的數字，假設其位置分別為x,x+1，在x+1和nums.length-1範圍內由後往前尋找，找到第一個大於x位置之數字的數字，將兩者顛倒，之後再將x+1到nums.length-1範圍內數字顛倒
+        int len = nums.length;
+        int cur = len-1;
+        int pre = cur-1;
+        if(len > 1){
+            while(nums[cur] <= nums[pre] && pre>0){
+                cur--;
+                pre--;}
+            if(pre == 0 && nums[cur] <= nums[pre]){
+                Arrays.sort(nums);
+            }
+            else{
+                for(int i=len-1; i>pre; i--){
+
+                    if(nums[i] > nums[pre]){
+                        int temp = nums[pre];
+                        nums[pre] = nums[i];
+                        nums[i] = temp;
+                        break;}}
+                int[] tem = new int[len-cur];
+                for(int j = len-1; j>pre; j--){
+                    tem[len-1-j] = nums[j];}
+
+                for(int j = cur; j<len; j++){
+                    nums[j] = tem[j-cur];}
+            }}
+
+
+
+    }
+}

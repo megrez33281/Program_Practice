@@ -1,0 +1,26 @@
+//解法：創建兩個新的ListNode，第一個蒐集小於x的ListNode，第二個蒐集大於等於x的ListNode，之後將兩個ListNode串聯
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        //將head分為大於等於x的部分和小於x的部分
+        ListNode before = new ListNode(0);
+        ListNode after = new ListNode(0);
+        ListNode runBefore = before;
+        ListNode runAfter = after;
+        ListNode temp = head;
+        while(temp != null){
+            if(temp.val >= x){
+                runAfter.next = temp;
+                runAfter = runAfter.next;
+            }
+            else{
+                runBefore.next = temp;
+                runBefore = runBefore.next;
+            }
+            temp = temp.next;
+        }
+
+        runBefore.next = after.next;
+        runAfter.next = null;//避免循環
+        return before.next;
+    }
+}

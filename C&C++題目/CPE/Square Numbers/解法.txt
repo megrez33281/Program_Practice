@@ -1,0 +1,11 @@
+解法1：
+   建立一個hash表
+   i從a到b
+   若hash[i] = 1 則計數器+1 continue
+   若hash[i] = 0 則檢查 (int)pow(i,0.5) 是否等於 (float)pow(i,0.5) 
+        若等於，則將計數器+1，並將hash[i]設為1
+	若不等於，則將hash[i]設為-1
+
+解法2：
+   輸出兩者的差 floor(pow(b,0.5))-ceil(pow(a,0.5)) +1
+   原理為直接將a和b分別取整數，兩者間的整數數量及代表a和b之間的Square Numbers數量

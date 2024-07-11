@@ -1,0 +1,6 @@
+注意，題目給予的是經過排序的遞增數列，且所求為 height-balanced binary search tree，即每一node之左子樹與右子數高度差不大於1
+
+故將sortedListToBST功能寫成：
+傳入一ListNode，找到其中間點（中間的node，可設定偏左或偏右(當node數量為偶數)）製作成一個TreeNode並回傳。
+
+藉由將此函數遞迴完成BST的建立

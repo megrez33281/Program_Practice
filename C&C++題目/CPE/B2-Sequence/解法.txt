@@ -1,0 +1,4 @@
+建立hash表
+讀取陣列後用雙重迴圈for(int i=0; i<N; i++){for(int j=i; j<N; j++)}來檢查
+若hash[array[i]+array[j]] = 1 代表出現重複
+否則，繼續檢查

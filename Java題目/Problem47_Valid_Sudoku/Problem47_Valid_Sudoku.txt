@@ -1,0 +1,49 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        //橫
+        for (int i = 0; i < 9; i++) {
+            int[] nums = new int[10];
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                    int temp = Integer.parseInt(board[i][j] + "");
+                    if (nums[temp] != temp) {
+                        nums[temp] = temp;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        //直
+        for (int i = 0; i < 9; i++) {
+            int[] nums = new int[10];
+            for (int j = 0; j < 9; j++) {
+                if (board[j][i] != '.') {
+                    int temp = Integer.parseInt(board[j][i] + "");
+                    if (nums[temp] != temp) {
+                        nums[temp] = temp;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        int[][] Nine = new int[9][10];
+        //將數獨分為9個3*3正方形，分別編號0~8，根據編號計算出對應的i、j值得到相應格子的編號
+        for(int num=0; num<9; num++){
+            for(int i=(num/3)*3; i<(num/3)*3+3; i++){
+                for(int j=(num%3)*3; j<(num%3)*3+3; j++){
+                    if(board[i][j] != '.'){
+                        int temp = Integer.parseInt(board[i][j] + "");
+                        if(Nine[num][temp] != temp){Nine[num][temp] = temp;}
+                        else{return false;}
+                    }
+                }
+
+        }
+
+        }
+        return true;
+    }
+}

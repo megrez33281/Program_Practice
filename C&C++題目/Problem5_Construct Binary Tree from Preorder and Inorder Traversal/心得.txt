@@ -1,0 +1,4 @@
+buildTree的功能為傳入binary tree的preorder和inorder，回傳此binary tree的根
+
+藉由preorder之第一個元素為根之特性(中--左--右)以及此元素inorder中之左邊為其左子樹，右邊為其右子數之特性將preorder與inorder陣列分割成該元素之左子樹與右子樹之陣列，分別傳入buildTree進行遞迴得到此元素之左子樹與右子樹之根並連接此元素。
+不斷重複此動作，直到傳入的陣列長度為1(直接為根)。

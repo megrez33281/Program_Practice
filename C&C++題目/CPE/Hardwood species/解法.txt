@@ -1,0 +1,9 @@
+由於樹的數量最多為1000000，大於陣列可分配的範圍
+用動態分配的方式來指定空間：
+ char** trees = (char**)calloc(1000000,sizeof(char*));
+	for(int i=0; i<10000; i++){
+		trees[i] = (char*)calloc(31,sizeof(char));
+	
+	}
+讀取後用bubble sort將所有樹依照a-z排序
+最後計算重複的樹種之數量並且與樹的總量相除後*100得到比例輸出

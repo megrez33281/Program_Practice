@@ -1,0 +1,35 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+
+        List<List<Integer>> lists = new ArrayList<>();
+
+        if(nums.length <=3){return lists;}
+        int[] newNum = Arrays.stream(nums).sorted().toArray();
+        int len = newNum.length;
+
+        for(int i=0; i<len-3; i++){
+            if(i>0 && newNum[i-1] == newNum[i]){continue;}
+            for(int j=i+1; j<len-2; j++){
+                if(j >i+1 && newNum[j-1] == newNum[j]){continue;}
+
+                int left = j+1;
+                int right = len-1;
+                while(left < right){
+                    long sum = (long)newNum[i] + newNum[j] + newNum[left] + newNum[right];
+                    if(sum == target){
+                        lists.add(Arrays.asList(newNum[i] , newNum[j] , newNum[left] , newNum[right]));
+                        while(left < right && newNum[right] == newNum[right-1]){right--;}
+                        while(left < right && newNum[left] == newNum[left+1]){left++;}
+                        right--;
+                        left++;}
+
+                    else if(sum > target){right--;}
+                    else{left++;}
+
+                }
+            }
+        }
+
+        return  lists;
+    }
+}

@@ -1,0 +1,127 @@
+利用DFS(depth first search)的概念進行binary tree的遍歷
+
+建立一個node包含層數(int)、根((struct TreeNode*)、下一個node(struct node*)
+
+建立兩個stack，一個用來進行binary tree的遍歷(stack 1)，一個用來儲存遍歷的路徑(stack 2)
+在此給予stack紀錄層數之功能
+首先將根放入stack 1中，並進入while迴圈，條件設定為在stack 1為空前持續迴圈
+迴圈時：
+1) 從stack中取出一個node進行訪問，並將其右子樹與左子樹先後存入stack中
+2) 檢查stack 2頂部之node是否為當前node之上一層，若為否則將stack 2頂部之node取出並將targetSum加上取出之node之值後重新檢查，重複此動作直到stack 2頂部之node為前node之上一層，將當前node丟入stack2中，將targetSum減去當前node之值
+3) 檢查當前node是否為leaft node，若為leaf node 且 targetSum等於0，將路儲存
+
+當stack 1 為空，結束迴圈
+
+注意：由於迴圈時會將當前訪問的node之左右子樹依據當前node之層數+1得到相對層數後丟入stack 1中，故只需在一開始將根丟入stack時設定初始層數，其餘時間不需特別調整。要查看當前層數時只需從當前的node查看
+
+以root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22為例：
+註:括號為:(node值,node之對應層數)
+tartetSum: 22
+stack 1: (5,0)
+stack 2: 
+
+訪問5
+檢查stack 2此時為空，符合條件
+tartetSum: 17
+stack 1: (8,1),(4,1) 
+stack 2: (5,0)
+
+訪問4
+檢查stack 2頂部為(5,0)，為4之上一層(1-1 = 0)，符合條件
+tartetSum: 13
+stack 1: (8,1),(11,2)
+stack 2: (5,0),(4,1)
+
+訪問11
+檢查stack 2頂部為(4,1)，為11之上一層(2-1 = 1)，符合條件
+tartetSum: 2
+stack 1: (8,1),(2,3),(7,3)
+stack 2: (5,0),(4,1),(11,2)
+
+訪問7:
+檢查stack 2頂部為(11,2)，為7之上一層(3-1 = 2)，符合條件
+tartetSum: -5
+stack 1: (8,1),(2,3)
+stack 2: (5,0),(4,1),(11,2),(7,3)
+
+7為leaf node，檢查targetSum不等於0，不儲存路徑
+
+
+訪問2:
+檢查stack 2頂部為(7,3)，非2之上一層(3-1 != 3)，不符合條件，將7從stack 2中取出，並將targetSum+7
+targetSum: 2
+stack 1: (8,1)
+stack 2: (5,0),(4,1),(11,2)
+檢查stack 2頂部為(11,2)，為2之上一層(3-1 = 2)，符合條件
+targetSum: 0
+stack 1: (8,1)
+stack 2: (5,0),(4,1),(11,2),(2,3)
+
+2為leaf node，且targetSum=0，將stack2之路徑儲存
+
+訪問8:
+檢查stack 2頂部為(2,3)，非8之上一層(1-1 != 3)，不符合條件，將2從stack 2中取出，並將targetSum+2
+targetSum: 2
+stack 1: (4,2),(13,2)
+stack 2: (5,0),(4,1),(11,2)
+
+檢查stack 2頂部為(11,2)，非8之上一層(1-1 != 2)，不符合條件，將11從stack 2中取出，並將targetSum+11
+targetSum: 13
+stack 1: (4,2),(13,2)
+stack 2: (5,0),(4,1)
+
+檢查stack 2頂部為(4,1)，非8之上一層(1-1 != 1)，不符合條件，將4從stack 2中取出，並將targetSum+4
+targetSum: 17
+stack 1: (4,2),(13,2)
+stack 2: (5,0)
+
+檢查stack 2頂部為(5,0)，為8之上一層(1-1 = 0)，符合條件
+targetSum: 9
+stack 1: (4,2),(13,2)
+stack 2: (5,0),(8,1)
+
+訪問13:
+檢查stack 2頂部為(8,1)，為13之上一層(2-1 = 1)，符合條件
+targetSum: -4
+stack 1: (4,2)
+stack 2: (5,0),(8,1),(13,2)
+
+13為leaf node，檢查targetSum不等於0，不儲存路徑
+
+
+訪問4:
+檢查stack 2頂部為(13,2)，非4之上一層(2-1 != 2)，不符合條件，將13從stack 2中取出，並將targetSum+13
+targetSum: 9
+stack 1: (4,2)
+stack 2: (5,0),(8,1)
+檢查stack 2頂部為(8,1)，為4之上一層(2-1 = 1)，符合條件
+targetSum: 5
+stack 1: (1,3),(5,3)
+stack 2: (5,0),(8,1),(4,2)
+
+訪問5:
+檢查stack 2頂部為(4,2)，為5之上一層(3-1 = 2)，符合條件
+targetSum: 0
+stack 1: (1,3)
+stack 2: (5,0),(8,1),(4,2),(5,3)
+
+5為leaf node，且targetSum=0，將stack2之路徑儲存
+
+訪問1:
+檢查stack 2頂部為(5,3)，非1之上一層(3-1 != 3)，不符合條件，將5從stack 2中取出，並將targetSum+5
+targetSum: 5
+stack 1: 
+stack 2: (5,0),(8,1),(4,2)
+
+檢查stack 2頂部為(4,2)，為1之上一層(3-1 = 2)，符合條件
+targetSum: 4
+stack 1: 
+stack 2: (5,0),(8,1),(4,2),(1,3)
+
+1為leaf node，檢查targetSum不等於0，不儲存路徑
+
+stack 1 為空，結束迴圈
+
+
+
+

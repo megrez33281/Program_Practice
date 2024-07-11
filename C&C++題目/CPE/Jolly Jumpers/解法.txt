@@ -1,0 +1,4 @@
+最好用while(scanf("%d",&n) != EOF) 或 while(scanf("%d",&n) == 1) 而不是while(scanf("%d",&n)) 避免TIme Exeede limit
+註：scanf成功讀取時會返回1，否則返回0
+
+當只需輸入的數字之差有滿足1~n-1都有(不論順序)即為jolly

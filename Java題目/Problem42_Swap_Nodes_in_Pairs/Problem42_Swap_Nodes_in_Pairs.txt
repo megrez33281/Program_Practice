@@ -1,0 +1,34 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null){return null;}
+        else if(head.next == null){return head;}
+
+        ListNode temp = head;
+        ListNode ans = head.next;
+        ListNode before = new ListNode(0);
+        before.next = head;
+
+        while(temp != null && temp.next != null){
+            //假設temp此時指向地址為x
+            ListNode tem = temp;//存取temp當前指向之地址(x)
+            temp = temp.next;//將temp指向下一個地址(x+1)
+            tem.next = temp.next;//將x之下一地址設為(x+2) : x,x+2
+            temp.next = tem;//將x+1之下一地址指向x : x+1,x,x+2
+            before.next = temp;//將x-1地址指向x+1
+            before = temp.next;//取得x-1之地址供下一輪使用
+            temp = temp.next.next;
+        }
+
+
+        return ans;
+
+    }
+}
+
+class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
